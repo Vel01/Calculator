@@ -43,7 +43,7 @@
                     <RadioButton fx:id="rd_on" text="ON" toggleGroup="$tg_onOff" selected="true"/>
                     <RadioButton fx:id="rd_off" text="OFF" toggleGroup="$tg_onOff"/>
                 </VBox>
-                <Button fx:id="btn_backspace" prefHeight="40" prefWidth="50">
+                <Button fx:id="btn_backspace" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
                     <graphic>
                         <ImageView>
                             <Image url="@/toolbarButtonGraphics/navigation/Back16.gif"/>
@@ -53,12 +53,12 @@
                         <Font name="Arial bold" size="20"/>
                     </font>
                 </Button>
-                <Button fx:id="btn_clear" text="C" prefHeight="40" prefWidth="50">
+                <Button fx:id="btn_clear" text="C" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
                     <font>
                         <Font name="Arial bold" size="18"/>
                     </font>
                 </Button>
-                <Button fx:id="btn_add" text="+" prefHeight="40" prefWidth="50">
+                <Button fx:id="btn_add" text="+" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
                     <font>
                         <Font name="Arial bold" size="20"/>
                     </font>
@@ -70,22 +70,22 @@
                     <Insets top="15"/>
                 </padding>
 
-                <Button fx:id="btn_seven" text="7" prefHeight="40" prefWidth="50">
+                <Button fx:id="btn_seven" text="7" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
                     <font>
                         <Font name="Arial bold" size="18"/>
                     </font>
                 </Button>
-                <Button fx:id="btn_eight" text="8" prefHeight="40" prefWidth="50">
+                <Button fx:id="btn_eight" text="8" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
                     <font>
                         <Font name="Arial bold" size="20"/>
                     </font>
                 </Button>
-                <Button fx:id="btn_nine" text="9" prefHeight="40" prefWidth="50">
+                <Button fx:id="btn_nine" text="9" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
                     <font>
                         <Font name="Arial bold" size="20"/>
                     </font>
                 </Button>
-                <Button fx:id="btn_subtract" text="-" prefHeight="40" prefWidth="50">
+                <Button fx:id="btn_subtract" text="-" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
                     <font>
                         <Font name="Arial bold" size="20"/>
                     </font>
@@ -96,53 +96,24 @@
                     <Insets top="15"/>
                 </padding>
 
-                <Button fx:id="btn_four" text="4" prefHeight="40" prefWidth="50">
+                <Button fx:id="btn_four" text="4" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
                     <font>
                         <Font name="Arial bold" size="18"/>
                     </font>
                 </Button>
-                <Button fx:id="btn_five" text="5" prefHeight="40" prefWidth="50">
+                <Button fx:id="btn_five" text="5" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
                     <font>
                         <Font name="Arial bold" size="20"/>
                     </font>
                 </Button>
 
-                <Button fx:id="btn_six" text="6" prefHeight="40" prefWidth="50">
+                <Button fx:id="btn_six" text="6" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
                     <font>
                         <Font name="Arial bold" size="20"/>
                     </font>
                 </Button>
 
-                <Button fx:id="btn_multiply" text="*" prefHeight="40" prefWidth="50">
-                    <font>
-                        <Font name="Arial bold" size="20"/>
-                    </font>
-                </Button>
-            </HBox>
-
-            <HBox spacing="10">
-                <padding>
-                    <Insets top="15"/>
-                </padding>
-
-                <Button fx:id="btn_one" text="1" prefHeight="40" prefWidth="50">
-                    <font>
-                        <Font name="Arial bold" size="18"/>
-                    </font>
-                </Button>
-                <Button fx:id="btn_two" text="2" prefHeight="40" prefWidth="50">
-                    <font>
-                        <Font name="Arial bold" size="20"/>
-                    </font>
-                </Button>
-
-                <Button fx:id="btn_three" text="3" prefHeight="40" prefWidth="50">
-                    <font>
-                        <Font name="Arial bold" size="20"/>
-                    </font>
-                </Button>
-
-                <Button fx:id="btn_division" text="/" prefHeight="40" prefWidth="50">
+                <Button fx:id="btn_multiply" text="*" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
                     <font>
                         <Font name="Arial bold" size="20"/>
                     </font>
@@ -154,17 +125,46 @@
                     <Insets top="15"/>
                 </padding>
 
-                <Button fx:id="btn_zero" text="0" prefHeight="40" prefWidth="50">
+                <Button fx:id="btn_one" text="1" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
                     <font>
                         <Font name="Arial bold" size="18"/>
                     </font>
                 </Button>
-                <Button fx:id="btn_point" text="." prefHeight="40" prefWidth="50">
+                <Button fx:id="btn_two" text="2" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
                     <font>
                         <Font name="Arial bold" size="20"/>
                     </font>
                 </Button>
-                <Button fx:id="btn_equal" text="=" prefHeight="40" prefWidth="110">
+
+                <Button fx:id="btn_three" text="3" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
+                    <font>
+                        <Font name="Arial bold" size="20"/>
+                    </font>
+                </Button>
+
+                <Button fx:id="btn_division" text="/" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
+                    <font>
+                        <Font name="Arial bold" size="20"/>
+                    </font>
+                </Button>
+            </HBox>
+
+            <HBox spacing="10">
+                <padding>
+                    <Insets top="15"/>
+                </padding>
+
+                <Button fx:id="btn_zero" text="0" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
+                    <font>
+                        <Font name="Arial bold" size="18"/>
+                    </font>
+                </Button>
+                <Button fx:id="btn_point" text="." prefHeight="40" prefWidth="50" onAction="#onButtonClick">
+                    <font>
+                        <Font name="Arial bold" size="20"/>
+                    </font>
+                </Button>
+                <Button fx:id="btn_equal" text="=" prefHeight="40" prefWidth="110" onAction="#onButtonClick">
                     <font>
                         <Font name="Arial bold" size="20"/>
                     </font>
