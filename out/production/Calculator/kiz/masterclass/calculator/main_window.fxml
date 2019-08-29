@@ -13,17 +13,19 @@
         <VBox>
             <BorderPane>
                 <padding>
-                    <Insets bottom="5" right="5"/>
+                    <Insets bottom="5"/>
                 </padding>
                 <right>
-                    <Label fx:id="lbl_display" text="4.0/" style="-fx-text-fill: red">
+                    <TextField fx:id="lbl_display" disable="true" style="-fx-text-fill: red"
+                               alignment="CENTER_RIGHT" prefWidth="220">
                         <font>
                             <Font name="Arial bold" size="12"/>
                         </font>
-                    </Label>
+                    </TextField>
                 </right>
             </BorderPane>
-            <TextField fx:id="txt_input" prefHeight="32" alignment="TOP_RIGHT">
+
+            <TextField fx:id="txt_input" prefHeight="32" alignment="TOP_RIGHT" editable="false">
                 <font>
                     <Font name="Arial bold" size="16"/>
                 </font>
@@ -43,7 +45,7 @@
                     <RadioButton fx:id="rd_on" text="ON" toggleGroup="$tg_onOff" selected="true"/>
                     <RadioButton fx:id="rd_off" text="OFF" toggleGroup="$tg_onOff"/>
                 </VBox>
-                <Button fx:id="btn_backspace" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
+                <Button fx:id="btn_backspace" prefHeight="40" prefWidth="50" >
                     <graphic>
                         <ImageView>
                             <Image url="@/toolbarButtonGraphics/navigation/Back16.gif"/>
@@ -53,12 +55,12 @@
                         <Font name="Arial bold" size="20"/>
                     </font>
                 </Button>
-                <Button fx:id="btn_clear" text="C" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
+                <Button fx:id="btn_clear" text="C" prefHeight="40" prefWidth="50">
                     <font>
                         <Font name="Arial bold" size="18"/>
                     </font>
                 </Button>
-                <Button fx:id="btn_add" text="+" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
+                <Button fx:id="btn_add" text="+" prefHeight="40" prefWidth="50"  onAction="#getOperatorWithResult">
                     <font>
                         <Font name="Arial bold" size="20"/>
                     </font>
@@ -85,7 +87,7 @@
                         <Font name="Arial bold" size="20"/>
                     </font>
                 </Button>
-                <Button fx:id="btn_subtract" text="-" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
+                <Button fx:id="btn_subtract" text="-" prefHeight="40" prefWidth="50" onAction="#getOperatorWithResult">
                     <font>
                         <Font name="Arial bold" size="20"/>
                     </font>
@@ -164,7 +166,7 @@
                         <Font name="Arial bold" size="20"/>
                     </font>
                 </Button>
-                <Button fx:id="btn_equal" text="=" prefHeight="40" prefWidth="110" onAction="#onButtonClick">
+                <Button fx:id="btn_equal" text="=" prefHeight="40" prefWidth="110" onAction="#equal">
                     <font>
                         <Font name="Arial bold" size="20"/>
                     </font>
