@@ -7,11 +7,10 @@ import javafx.scene.control.TextField;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Controller {
+public class Controller extends SimpleCalculator {
     @FXML
     private TextField txt_input;
 
-    private static double total = 0;
     private static double operandOne = 0;
     private static double operandTwo = 0;
     private static String operator = "";
@@ -26,34 +25,29 @@ public class Controller {
         series.add(getKey(event));
         String in = "";
         for (String next : series) {
-            in = in + next;
+            in = String.format("%s%s", in, next);
         }
         txt_input.setText(in);
         switchOn = false;
     }
 
-
     private double getOperatorResult() {
-        double result = 0;
-//        if (operator.equals("+")) {
-//            txt_input.setText((operandOne + operandTwo) + "");
-//            result = (operandOne + operandTwo);
-//        } else
+        double result = (operandOne + operandTwo);
+        txt_input.setText(result + "");
         switchOn = true;
         series.clear();
-        System.out.println(result);
         return result;
     }
 
-    private void processingOperatorResult() {
+    private void additionOperationResult() {
         if (!switchOn) {
             if (!flag) {
                 operandOne = Double.parseDouble(txt_input.getText());
-                total = operandOne = getOperatorResult();
+                operandOne = getOperatorResult();
                 flag = true;
             } else {
                 operandTwo = Double.parseDouble(txt_input.getText());
-                total = operandTwo = getOperatorResult();
+                operandTwo = getOperatorResult();
                 flag = false;
             }
         }
@@ -62,17 +56,37 @@ public class Controller {
     @FXML
     public void getOperatorWithResult(ActionEvent event) {
         operator = getKey(event);
-        processingOperatorResult();
+
+        if (!flag) {
+            operandOne = Double.parseDouble(txt_input.getText());
+            txt_input.setText((operandOne - operandTwo) + "");
+            series.clear();
+
+            flag = true;
+        } else {
+            operandTwo = Double.parseDouble(txt_input.getText());
+            txt_input.setText((operandOne - operandTwo) + "");
+            series.clear();
+
+            flag = false;
+        }
+
+
+//        close for debugging purposes
+//        if (operator.equals("+"))
+//            additionOperationResult();
+//
+//        super.setFirstNumber(Double.parseDouble(txt_input.getText()));
     }
+
 
     @FXML
     public void equal() {
 
-        txt_input.setText((total + Double.parseDouble(txt_input.getText())) + "");
+        calculate(operator);
         //reset
-        total = 0;
-        operandOne = total;
-        operandTwo = total;
+        operandOne = 0;
+        operandTwo = 0;
         series.clear();
     }
 
@@ -84,4 +98,11 @@ public class Controller {
         return key;
     }
 
+    @Override
+    protected void calculate(String operator) {
+        super.setSecondNumber(Double.parseDouble(txt_input.getText()));
+        int i = super.getOperator(operator);
+        String[] operators = new String[]{"+", "-", "*", "/"};
+        txt_input.setText(super.operation(operators[i]) + "");
+    }
 }

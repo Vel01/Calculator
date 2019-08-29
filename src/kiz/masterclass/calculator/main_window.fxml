@@ -45,7 +45,7 @@
                     <RadioButton fx:id="rd_on" text="ON" toggleGroup="$tg_onOff" selected="true"/>
                     <RadioButton fx:id="rd_off" text="OFF" toggleGroup="$tg_onOff"/>
                 </VBox>
-                <Button fx:id="btn_backspace" prefHeight="40" prefWidth="50" >
+                <Button fx:id="btn_backspace" prefHeight="40" prefWidth="50">
                     <graphic>
                         <ImageView>
                             <Image url="@/toolbarButtonGraphics/navigation/Back16.gif"/>
@@ -60,7 +60,7 @@
                         <Font name="Arial bold" size="18"/>
                     </font>
                 </Button>
-                <Button fx:id="btn_add" text="+" prefHeight="40" prefWidth="50"  onAction="#getOperatorWithResult">
+                <Button fx:id="btn_add" text="+" prefHeight="40" prefWidth="50" onAction="#getOperatorWithResult">
                     <font>
                         <Font name="Arial bold" size="20"/>
                     </font>
@@ -115,7 +115,7 @@
                     </font>
                 </Button>
 
-                <Button fx:id="btn_multiply" text="*" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
+                <Button fx:id="btn_multiply" text="*" prefHeight="40" prefWidth="50" onAction="#getOperatorWithResult">
                     <font>
                         <Font name="Arial bold" size="20"/>
                     </font>
@@ -144,7 +144,7 @@
                     </font>
                 </Button>
 
-                <Button fx:id="btn_division" text="/" prefHeight="40" prefWidth="50" onAction="#onButtonClick">
+                <Button fx:id="btn_division" text="/" prefHeight="40" prefWidth="50" onAction="#getOperatorWithResult">
                     <font>
                         <Font name="Arial bold" size="20"/>
                     </font>
