@@ -20,18 +20,22 @@ public class Controller extends SimpleCalculator {
 
     private static List<String> series = new ArrayList<>();
 
-    @FXML
-    public void onButtonClick(ActionEvent event) {
+    private void readText(ActionEvent event) {
         series.add(getKey(event));
         String in = "";
         for (String next : series) {
             in = String.format("%s%s", in, next);
         }
         txt_input.setText(in);
+    }
+
+    @FXML
+    public void onButtonClick(ActionEvent event) {
+        readText(event);
         switchOn = false;
     }
 
-    private double getOperatorResult() {
+    private double getAdditionResult() {
         double result = (operandOne + operandTwo);
         txt_input.setText(result + "");
         switchOn = true;
@@ -43,12 +47,35 @@ public class Controller extends SimpleCalculator {
         if (!switchOn) {
             if (!flag) {
                 operandOne = Double.parseDouble(txt_input.getText());
-                operandOne = getOperatorResult();
+                operandOne = getAdditionResult();
                 flag = true;
             } else {
                 operandTwo = Double.parseDouble(txt_input.getText());
-                operandTwo = getOperatorResult();
+                operandTwo = getAdditionResult();
                 flag = false;
+            }
+        }
+    }
+
+    private void subtractionOperationResult(ActionEvent event) {
+        if (!txt_input.getText().equals("-") &&!switchOn) {
+            if (!flag) {// !false
+                operandOne = Double.parseDouble(txt_input.getText());
+                txt_input.setText((operandOne - operandTwo) + "");
+                operandOne = (operandOne - operandTwo);
+                System.out.println("1) op1: " + operandOne + " - " + "op2: " + operandTwo);
+                series.clear();
+                switchOn = true;
+                flag = true;
+            } else {
+                operandTwo = Double.parseDouble(txt_input.getText());
+                txt_input.setText((operandOne - operandTwo) + "");
+                operandTwo = (operandOne - operandTwo);
+                System.out.println("2) op1: " + operandOne + " - " + "op2: " + operandTwo);
+                operandOne = operandTwo;
+                operandTwo = 0;
+                series.clear();
+                switchOn = true;
             }
         }
     }
@@ -56,27 +83,19 @@ public class Controller extends SimpleCalculator {
     @FXML
     public void getOperatorWithResult(ActionEvent event) {
         operator = getKey(event);
-
-        if (!flag) {
-            operandOne = Double.parseDouble(txt_input.getText());
-            txt_input.setText((operandOne - operandTwo) + "");
-            series.clear();
-
-            flag = true;
+        //TODO Clean codes
+        if (txt_input.getText().isEmpty() && !switchOn) {
+            readText(event);
         } else {
-            operandTwo = Double.parseDouble(txt_input.getText());
-            txt_input.setText((operandOne - operandTwo) + "");
-            series.clear();
+            if (operator.equals("+"))
+                additionOperationResult();
+            else if (operator.equals("-"))
+                subtractionOperationResult(event);
 
-            flag = false;
+            if (!txt_input.getText().equals("-"))
+            super.setFirstNumber(Double.parseDouble(txt_input.getText()));
         }
 
-
-//        close for debugging purposes
-//        if (operator.equals("+"))
-//            additionOperationResult();
-//
-//        super.setFirstNumber(Double.parseDouble(txt_input.getText()));
     }
 
 
