@@ -60,7 +60,7 @@
                         <Font name="Arial bold" size="18"/>
                     </font>
                 </Button>
-                <Button fx:id="btn_add" text="+" prefHeight="40" prefWidth="50" onAction="#getOperatorWithResult">
+                <Button fx:id="btn_add" text="+" prefHeight="40" prefWidth="50" onAction="#getOperatorsResult">
                     <font>
                         <Font name="Arial bold" size="20"/>
                     </font>
@@ -87,7 +87,7 @@
                         <Font name="Arial bold" size="20"/>
                     </font>
                 </Button>
-                <Button fx:id="btn_subtract" text="-" prefHeight="40" prefWidth="50" onAction="#getOperatorWithResult">
+                <Button fx:id="btn_subtract" text="-" prefHeight="40" prefWidth="50" onAction="#getOperatorsResult">
                     <font>
                         <Font name="Arial bold" size="20"/>
                     </font>
@@ -115,7 +115,7 @@
                     </font>
                 </Button>
 
-                <Button fx:id="btn_multiply" text="*" prefHeight="40" prefWidth="50" onAction="#getOperatorWithResult">
+                <Button fx:id="btn_multiply" text="*" prefHeight="40" prefWidth="50" onAction="#getOperatorsResult">
                     <font>
                         <Font name="Arial bold" size="20"/>
                     </font>
@@ -144,7 +144,7 @@
                     </font>
                 </Button>
 
-                <Button fx:id="btn_division" text="/" prefHeight="40" prefWidth="50" onAction="#getOperatorWithResult">
+                <Button fx:id="btn_division" text="/" prefHeight="40" prefWidth="50" onAction="#getOperatorsResult">
                     <font>
                         <Font name="Arial bold" size="20"/>
                     </font>

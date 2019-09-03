@@ -14,7 +14,7 @@ public class Controller extends SimpleCalculator {
     private static double operandOne = 0;
     private static double operandTwo = 0;
     private static String operator = "";
-    private boolean flag = false;
+    private static boolean flag = false;
     private boolean switchOn = false;
 
 
@@ -57,56 +57,54 @@ public class Controller extends SimpleCalculator {
         }
     }
 
-    private void subtractionOperationResult(ActionEvent event) {
-        if (!txt_input.getText().equals("-") &&!switchOn) {
-            if (!flag) {// !false
+    private double getSubtractionResult() {
+        txt_input.setText((operandOne - operandTwo) + "");
+        series.clear();
+        switchOn = true;
+        return (operandOne - operandTwo);
+    }
+
+    private void subtractionOperationResult() {
+        if (!txt_input.getText().equals("-") && !switchOn) {
+            if (!flag) {
                 operandOne = Double.parseDouble(txt_input.getText());
-                txt_input.setText((operandOne - operandTwo) + "");
-                operandOne = (operandOne - operandTwo);
-                System.out.println("1) op1: " + operandOne + " - " + "op2: " + operandTwo);
-                series.clear();
-                switchOn = true;
+                operandOne = getSubtractionResult();
                 flag = true;
             } else {
                 operandTwo = Double.parseDouble(txt_input.getText());
-                txt_input.setText((operandOne - operandTwo) + "");
-                operandTwo = (operandOne - operandTwo);
-                System.out.println("2) op1: " + operandOne + " - " + "op2: " + operandTwo);
-                operandOne = operandTwo;
+                operandOne = operandTwo = getSubtractionResult();
                 operandTwo = 0;
-                series.clear();
-                switchOn = true;
             }
         }
     }
 
     @FXML
-    public void getOperatorWithResult(ActionEvent event) {
+    public void getOperatorsResult(ActionEvent event) {
         operator = getKey(event);
-        //TODO Clean codes
         if (txt_input.getText().isEmpty() && !switchOn) {
             readText(event);
         } else {
+
             if (operator.equals("+"))
                 additionOperationResult();
             else if (operator.equals("-"))
-                subtractionOperationResult(event);
+                subtractionOperationResult();
 
             if (!txt_input.getText().equals("-"))
-            super.setFirstNumber(Double.parseDouble(txt_input.getText()));
+                super.setFirstNumber(Double.parseDouble(txt_input.getText()));
         }
-
     }
 
+    private static void reset() {
+        operandTwo = operandOne = 0;
+        series.clear();
+        flag = false;
+    }
 
     @FXML
     public void equal() {
-
         calculate(operator);
-        //reset
-        operandOne = 0;
-        operandTwo = 0;
-        series.clear();
+        reset();
     }
 
 
